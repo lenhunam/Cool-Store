@@ -7,27 +7,39 @@ const sliderItems = document.querySelector(".slider-items")
 const arrowRight = document.querySelector(".ri-arrow-right-circle-fill")
 const arrowLeft = document.querySelector(".ri-arrow-left-circle-fill")
 let i = 0;
-arrowRight.addEventListener('click',()=>{
-    // console.log(i)
+function sliderMove(i) {
+    sliderItems.style.left = -i*100 + "vw"
+}
+arrowRight.addEventListener('click',()=>{   
     if (i<sliderItem.length-1) {
         i++
-        sliderItems.style.left = -i*100 + "vw"
+        sliderMove(i)
     }else{
         return false
     }
-
 })
 
 arrowLeft.addEventListener('click',()=>{
 if (i<=0) {
     return false
 }else{
-    // console.log(i)
     i--
-    sliderItems.style.left = -i*100 + "vw"
+    sliderMove(i)
 }
 })
 
+function autoSlider() {
+    if (i<sliderItem.length-1) {
+        i++
+        sliderMove(i)
+    } else {
+        i=0
+        sliderMove(i)
+    }
+}
+
+
+setInterval(autoSlider,3500)
 
 
 
